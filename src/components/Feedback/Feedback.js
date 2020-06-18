@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import './Feedback.css';
 
 class Feedback extends Component {
+  static defaultProps = {
+    initialGood: 0,
+    initialNeutral: 0,
+    initialBad: 0,
+  };
+
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+    good: this.props.initialGood,
+    neutral: this.props.initialNeutral,
+    bad: this.props.initialBad,
   };
 
   goodIncrement = () => {
@@ -24,6 +30,15 @@ class Feedback extends Component {
     this.setState(prevState => ({
       bad: prevState.bad + 1,
     }));
+  };
+
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    return Math.ceil((this.state.good / this.countTotalFeedback()) * 100);
   };
 
   render() {
@@ -57,6 +72,14 @@ class Feedback extends Component {
         <span className="feedback-text">Good: {good}</span>
         <span className="feedback-text">Neutral: {neutral}</span>
         <span className="feedback-text">Bad: {bad}</span>
+        <span className="feedback-text">
+          Total: {this.countTotalFeedback()}
+        </span>
+        {this.countPositiveFeedbackPercentage() > 0 && (
+          <span className="feedback-text">
+            Positive feedback: {this.countPositiveFeedbackPercentage()}%
+          </span>
+        )}
       </div>
     );
   }

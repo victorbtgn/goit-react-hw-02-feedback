@@ -1,5 +1,6 @@
 .feedback {
   width: 500px;
+  border-radius: 50px;
   background: linear-gradient(to right, #e9dc2156, #f1af4b44);
   padding: 30px;
 }

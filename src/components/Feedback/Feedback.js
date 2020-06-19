@@ -19,23 +19,11 @@ class Feedback extends Component {
   };
 
   btnIncrement = evt => {
-    if (evt.target.name === 'good') {
-      this.setState(prevState => ({
-        good: prevState.good + 1,
-      }));
-    }
+    const { name } = evt.currentTarget;
 
-    if (evt.target.name === 'neutral') {
-      this.setState(prevState => ({
-        neutral: prevState.neutral + 1,
-      }));
-    }
-
-    if (evt.target.name === 'bad') {
-      this.setState(prevState => ({
-        bad: prevState.bad + 1,
-      }));
-    }
+    this.setState(prevState => ({
+      [name]: prevState[name] + 1,
+    }));
   };
 
   countTotalFeedback = () => {

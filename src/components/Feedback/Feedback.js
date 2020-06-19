@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './Feedback.css';
 import Statistics from './Statistics';
 import FeedbackOptions from './FeedbackOptions';
 import Section from './Section';
 import Notification from './Notification';
+import './Feedback.css';
 
 class Feedback extends Component {
   static defaultProps = {
@@ -55,9 +55,11 @@ class Feedback extends Component {
     return (
       <div className="feedback">
         <Section title="Please leave feedback">
-          <FeedbackOptions onLeaveFeedback={this.btnIncrement} />
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.btnIncrement}
+          />
         </Section>
-        {/* options={} */}
 
         <Section title="Statistics">
           {total > 0 ? (

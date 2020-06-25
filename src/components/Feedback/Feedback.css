@@ -5,11 +5,11 @@
   padding: 30px;
 }
 
-.feedback-title {
+.title {
   margin-bottom: 20px;
 }
 
-.feedback-btn {
+.btn {
   border-style: none;
   outline: none;
   cursor: pointer;
@@ -21,14 +21,14 @@
   transition: 0.2s linear;
 }
 
-.feedback-btn:hover {
+.btn:hover {
   transform: scale(1.1);
   color: #ffffff;
   background-color: #383806a4;
   transition: 0.2s linear;
 }
 
-.feedback-text {
+.text {
   display: block;
   margin-bottom: 10px;
 }

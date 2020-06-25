@@ -5,16 +5,14 @@ const Statistics = ({ options, total, positivePercentage }) => (
   <>
     {options.map(option => {
       return (
-        <span key={option[0]} className="feedback-text">
+        <span key={option[0]} className="text">
           {option[0]}: {option[1]}
         </span>
       );
     })}
-    <span className="feedback-text">Total: {total}</span>
+    <span className="text">Total: {total}</span>
     {positivePercentage > 0 && (
-      <span className="feedback-text">
-        Positive feedback: {positivePercentage}%
-      </span>
+      <span className="text">Positive feedback: {positivePercentage}%</span>
     )}
   </>
 );
@@ -24,27 +22,5 @@ Statistics.propTypes = {
   total: PropTypes.number,
   positivePercentage: PropTypes.number,
 };
-
-// const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
-//   <>
-//     <span className="feedback-text">Good: {good}</span>
-//     <span className="feedback-text">Neutral: {neutral}</span>
-//     <span className="feedback-text">Bad: {bad}</span>
-//     <span className="feedback-text">Total: {total}</span>
-//     {positivePercentage > 0 && (
-//       <span className="feedback-text">
-//         Positive feedback: {positivePercentage}%
-//       </span>
-//     )}
-//   </>
-// );
-
-// Statistics.propTypes = {
-//   good: PropTypes.number,
-//   neutral: PropTypes.number,
-//   bad: PropTypes.number,
-//   total: PropTypes.number,
-//   positivePercentage: PropTypes.number,
-// };
 
 export default Statistics;

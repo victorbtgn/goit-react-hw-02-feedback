@@ -18,18 +18,11 @@ class Feedback extends Component {
     bad: this.props.initialBad,
   };
 
-  btnIncrement = evt => {
-    const { name } = evt.currentTarget;
-
+  handelFeedback = ({ currentTarget: { name } }) => {
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
     }));
   };
-
-  // countTotalFeedback = () => {
-  //   const { good, neutral, bad } = this.state;
-  //   return good + neutral + bad;
-  // };
 
   countTotalFeedback = () =>
     Object.values(this.state).reduce((acc, item) => {
@@ -42,7 +35,6 @@ class Feedback extends Component {
   };
 
   render() {
-    // const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
 
@@ -51,23 +43,9 @@ class Feedback extends Component {
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={Object.keys(this.state)}
-            onLeaveFeedback={this.btnIncrement}
+            onLeaveFeedback={this.handelFeedback}
           />
         </Section>
-
-        {/* <Section title="Statistics">
-          {total > 0 ? (
-            <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              total={total}
-              positivePercentage={positivePercentage}
-            />
-          ) : (
-            <Notification message="No feedback given" />
-          )}
-        </Section> */}
 
         <Section title="Statistics">
           {total > 0 ? (
